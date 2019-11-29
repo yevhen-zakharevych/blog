@@ -1,0 +1,49 @@
+<mat-card class="login">
+  <mat-card-header>
+    <mat-card-title>Login to admin panel</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-error *ngIf="message">
+      {{ message }}
+    </mat-error>
+    <mat-error *ngIf="auth.error$ | async as error">
+      {{ error }}
+    </mat-error>
+    <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field class="form-control">
+        <input matInput placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control">
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
+          Password has to be longer then
+          {{ loginForm.get("password").errors.minlength.requiredLength }}. Now
+          is {{ loginForm.get("password").errors.minlength.actualLength }}
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="loginForm.invalid || submitted"
+      >
+        LOGIN
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

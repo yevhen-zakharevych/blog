@@ -1,0 +1,35 @@
+<div *ngIf="editForm; else spinner">
+  <mat-card class="edit-card">
+    <mat-card-content>
+      <h1>Edit post</h1>
+      <form [formGroup]="editForm" (ngSubmit)="submit()">
+        <mat-form-field class="form-control">
+          <input matInput placeholder="Title" formControlName="title" />
+          <mat-error *ngIf="editForm.get('title').hasError('required')">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-control">
+          Post content:
+          <quill-editor formControlName="text"></quill-editor>
+        </div>
+
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="editForm.invalid || submitted"
+        >
+          Update Post
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #spinner>
+  <div class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

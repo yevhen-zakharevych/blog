@@ -1,0 +1,14 @@
+<mat-card class="alert-wrap" *ngIf="text">
+  <mat-card-content>
+    <div
+      class="alert"
+      [ngClass]="{
+        'alert-success': type === 'success',
+        'alert-warning': type === 'warning',
+        'alert-danger': type === 'danger'
+      }"
+    >
+      <p>{{ text }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

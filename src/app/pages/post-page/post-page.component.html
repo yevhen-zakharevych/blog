@@ -1,0 +1,19 @@
+<mat-card class="post" *ngIf="post$ | async as post; else spinner">
+  <mat-card-content>
+    <div class="header" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button routerLink="/" color="primary">
+        Home page
+      </button>
+    </div>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-subtitle>{{ post.date | date: "dd.MM.yyyy" }}</mat-card-subtitle>
+
+    <quill-view-html [content]="post.text"></quill-view-html>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #spinner>
+  <div class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

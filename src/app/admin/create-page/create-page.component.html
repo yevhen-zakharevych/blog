@@ -1,0 +1,35 @@
+<mat-card class="create-card">
+  <mat-card-content>
+    <h1>Create new post</h1>
+
+    <form name="createForm" [formGroup]="createForm" (ngSubmit)="submit()">
+      <mat-form-field class="form-control">
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-error *ngIf="createForm.get('title').hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control">
+        <input matInput placeholder="Author" formControlName="author" />
+        <mat-error *ngIf="createForm.get('author').hasError('required')">
+          Author is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-control">
+        Post content:
+        <quill-editor formControlName="text"></quill-editor>
+      </div>
+
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="createForm.invalid || submitted"
+      >
+        Create Post
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

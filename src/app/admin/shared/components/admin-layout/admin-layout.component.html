@@ -1,0 +1,27 @@
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <h1 class="toolbar-title">Admin panel</h1>
+
+    <div class="navigation" *ngIf="auth.isAuthenticated()">
+      <a mat-button [routerLink]="'dashboard'" routerLinkActive="active">
+        Dashboard
+      </a>
+      <a mat-button [routerLink]="'create'" routerLinkActive="active">
+        Create Post
+      </a>
+      <a
+        mat-raised-button
+        href="#"
+        (click)="logout($event)"
+        class="logout"
+        color="warn"
+      >
+        Logout
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-alert></app-alert>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

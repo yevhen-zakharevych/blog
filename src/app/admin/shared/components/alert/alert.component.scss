@@ -1,0 +1,20 @@
+.alert-wrap {
+  position: fixed;
+  z-index: 100;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.alert-success {
+  color: green;
+}
+.alert-warning {
+  color: orange;
+}
+.alert-danger {
+  color: red;
+}
