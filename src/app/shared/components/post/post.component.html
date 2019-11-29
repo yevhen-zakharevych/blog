@@ -5,7 +5,12 @@
     <div>
       <small>{{ post.author }}</small>
     </div>
-    <button mat-raised-button color="primary" [routerLink]="['/post', post.id]">
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/post', post.id]"
+      class="btn-open"
+    >
       Open
     </button>
   </mat-card-content>
