@@ -12,6 +12,7 @@ import { AuthGuard } from "./shared/services/auth.guard";
 import { SearchPipe } from "./shared/pipes/search.pipe";
 import { AlertComponent } from "./shared/components/alert/alert.component";
 import { AlertService } from "./shared/services/alert.service";
+import { RegisterPageComponent } from "./register-page/register-page.component";
 
 const routes = [
   {
@@ -20,6 +21,7 @@ const routes = [
     children: [
       { path: "", redirectTo: "/admin/login", pathMatch: "full" },
       { path: "login", component: LoginPageComponent },
+      { path: "register", component: RegisterPageComponent },
       {
         path: "dashboard",
         component: DashboardPageComponent,
@@ -47,7 +49,8 @@ const routes = [
     CreatePageComponent,
     EditPageComponent,
     SearchPipe,
-    AlertComponent
+    AlertComponent,
+    RegisterPageComponent
   ],
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule],

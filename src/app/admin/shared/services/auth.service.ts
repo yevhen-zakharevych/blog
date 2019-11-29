@@ -9,6 +9,7 @@ import { environment } from "src/environments/environment";
 export class AuthService {
   public error$: Subject<string> = new Subject<string>();
   private url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
+  private signUpUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`;
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +27,10 @@ export class AuthService {
     return this.http
       .post(this.url, user)
       .pipe(tap(this.setToken), catchError(this.handleError.bind(this)));
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post(this.signUpUrl, user);
   }
 
   logout() {

@@ -36,14 +36,26 @@
           is {{ loginForm.get("password").errors.minlength.actualLength }}
         </mat-error>
       </mat-form-field>
-      <button
-        mat-raised-button
-        color="accent"
-        type="submit"
-        [disabled]="loginForm.invalid || submitted"
-      >
-        LOGIN
-      </button>
+      <div>
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          class="btn-login"
+          [disabled]="loginForm.invalid || submitted"
+        >
+          LOGIN
+        </button>
+        <span class="">or</span>
+        <button
+          mat-button
+          type="button"
+          color="primary"
+          [routerLink]="['/admin', 'register']"
+        >
+          Register
+        </button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>
